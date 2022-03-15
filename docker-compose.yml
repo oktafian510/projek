@@ -1,0 +1,43 @@
+version '3.7'
+
+services  
+
+  db
+
+    image mysql5.7
+
+    restart always
+
+    ports 
+
+      - 33063306
+
+    environment
+
+      MYSQL_DATABASE 'laraapp_db'
+
+      MYSQL_ALLOW_EMPTY_PASSWORD 1
+
+      MYSQL_ROOT_PASSWORD 
+
+    volumes
+
+      - .dbvarlibmysql
+
+  app
+
+    build
+
+      context .
+
+      dockerfile .dockerDockerfile
+
+    image 'laravelapp'
+
+    ports
+
+      - 808080
+
+    volumes
+
+      - .varwwwhtml
